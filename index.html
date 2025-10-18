@@ -150,6 +150,42 @@
             background-color: var(--primary-color);
             border-color: var(--primary-color);
         }
+        
+        /* Styles pour le carousel des témoignages */
+        .testimonial-carousel .carousel-item {
+            padding: 20px;
+        }
+        
+        .testimonial-carousel .carousel-control-prev,
+        .testimonial-carousel .carousel-control-next {
+            width: 5%;
+            opacity: 0.8;
+        }
+        
+        .testimonial-carousel .carousel-control-prev-icon,
+        .testimonial-carousel .carousel-control-next-icon {
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            background-size: 60%;
+        }
+        
+        .testimonial-carousel .carousel-indicators {
+            bottom: -50px;
+        }
+        
+        .testimonial-carousel .carousel-indicators button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            opacity: 0.5;
+        }
+        
+        .testimonial-carousel .carousel-indicators button.active {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -459,57 +495,93 @@
     <section id="temoignages" class="py-5">
         <div class="container">
             <h2 class="text-center section-title fw-bold display-5 mb-5">TÉMOIGNAGES</h2>
-            <div class="row g-4">
-                <div class="col-lg-6">
-                    <div class="card testimonial-card border-0 shadow h-100">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center mb-3">
-                                <img src="images/ipm.jpg" alt="IPM" class="rounded-circle me-3" style="width: 60px; height: 60px; object-fit: cover;">
-                                <div>
-                                    <h5 class="fw-bold mb-0">Institut Présentation de Marie</h5>
+            
+            <div id="testimonialCarousel" class="carousel slide testimonial-carousel" data-bs-ride="carousel">
+                <!-- Indicateurs -->
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                
+                <!-- Contenu du carousel -->
+                <div class="carousel-inner">
+                    <!-- Témoignage 1 -->
+                    <div class="carousel-item active">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="card testimonial-card border-0 shadow h-100">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <img src="images/ipm.jpg" alt="IPM" class="rounded-circle me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                                            <div>
+                                                <h5 class="fw-bold mb-0">Institut Présentation de Marie</h5>
+                                            </div>
+                                        </div>
+                                        <p class="card-text">
+                                            "Notre institut a eu le plaisir de collaborer avec le restaurant Saveurs d'Or à plusieurs reprises. 
+                                            La qualité des plats, la présentation soignée et le professionnalisme de l'équipe ont toujours été au rendez-vous."
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                            <p class="card-text">
-                                "Notre institut a eu le plaisir de collaborer avec le restaurant Saveurs d'Or à plusieurs reprises. 
-                                La qualité des plats, la présentation soignée et le professionnalisme de l'équipe ont toujours été au rendez-vous."
-                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Témoignage 2 -->
+                    <div class="carousel-item">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="card testimonial-card border-0 shadow h-100">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <img src="images/astou.jpg" alt="Astou" class="rounded-circle me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                                            <div>
+                                                <h5 class="fw-bold mb-0">Ndeye Astou DIOP</h5>
+                                            </div>
+                                        </div>
+                                        <p class="card-text">
+                                            "Une expérience culinaire exceptionnelle ! Les plats sont aussi beaux que délicieux, et l'accueil est toujours chaleureux. 
+                                            Saveurs d'Or est devenu mon restaurant préféré pour mes dîners entre amis."
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Témoignage 3 -->
+                    <div class="carousel-item">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="card testimonial-card border-0 shadow h-100">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <img src="images/am.jpg" alt="Am Dev" class="rounded-circle me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                                            <div>
+                                                <h5 class="fw-bold mb-0">Am_DEV</h5>
+                                            </div>
+                                        </div>
+                                        <p class="card-text">
+                                            "Les repas sont toujours frais et bien présentés. On sent la qualité dans chaque ingrédient. 
+                                            C'est mon adresse coup de cœur pour un dîner réussi !"
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="col-lg-6">
-                    <div class="card testimonial-card border-0 shadow h-100">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center mb-3">
-                                <img src="images/astou.jpg" alt="Astou" class="rounded-circle me-3" style="width: 60px; height: 60px; object-fit: cover;">
-                                <div>
-                                    <h5 class="fw-bold mb-0">Ndeye Astou DIOP</h5>
-                                </div>
-                            </div>
-                            <p class="card-text">
-                                "Une expérience culinaire exceptionnelle ! Les plats sont aussi beaux que délicieux, et l'accueil est toujours chaleureux. 
-                                Saveurs d'Or est devenu mon restaurant préféré pour mes dîners entre amis."
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-6">
-                    <div class="card testimonial-card border-0 shadow h-100">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center mb-3">
-                                <img src="images/am.jpg" alt="Am Dev" class="rounded-circle me-3" style="width: 60px; height: 60px; object-fit: cover;">
-                                <div>
-                                    <h5 class="fw-bold mb-0">Am_DEV</h5>
-                                </div>
-                            </div>
-                            <p class="card-text">
-                                "Les repas sont toujours frais et bien présentés. On sent la qualité dans chaque ingrédient. 
-                                C'est mon adresse coup de cœur pour un dîner réussi !"
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                <!-- Contrôles -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Précédent</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Suivant</span>
+                </button>
             </div>
         </div>
     </section>

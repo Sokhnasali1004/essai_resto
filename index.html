@@ -1,63 +1,85 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saveur d'OR</title>
-
+    <link rel="shortcut icon" href="images/icone1.png" type="image/x-icon" />
+    
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    
+    <!-- Styles personnalisés -->
     <style>
         :root {
             --primary-color: #572e0d;
-            --secondary-color: #8B4513;
+            --secondary-color: #572e0d;
             --light-color: #fff;
-            --dark-color: #333;
-        }
-
-        body {
-            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-            background: #fff;
-            color: var(--dark-color);
-        }
-
-        /* Hero */
+            --dark-color: #572e0d;
+            --text-color: #572e0d;
+            --box-shadow: 0 5px 15px rgba(53, 16, 16, 0.1);
+            --transition: all 0.3s ease;
+            --close: rgb(255, 0, 0);
+}
+        
+        
         .hero-section {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             color: white;
             padding: 100px 0;
+            height: 100vh;
         }
-
+        .coin{
+            font-family: "";
+            font-size: 64px;
+            margin-bottom: 0 px 20px;
+        }
+        
+       .bienvenue{
+        font-family: '';
+        font-size: 55px;
+        margin-left: 100px;
+       }
         .navbar-brand {
             font-weight: 700;
-            font-size: 1.8rem;
+            font-size: 1.9rem;
+            font-family: "";
         }
-
+        
         .nav-link {
-            font-weight: 500;
+            font-weight: bold;
             margin: 0 10px;
+            color: black;
+            font-family: "";
+            font-size: 19px;
         }
+        .nav-link:hover {
+            color: var(--primary-color);
+            font-size: 19px;
+            font-family: "";
+            font-weight: bold;
 
+        }
         .nav-link.active {
             color: var(--primary-color) !important;
+            font-size: 19px;
         }
-
+        
         .card-hover:hover {
             transform: translateY(-10px);
             transition: all 0.3s ease;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
-
+        
         .stats-section {
             margin-top: -80px;
             position: relative;
             z-index: 100;
         }
-
+        
         .stat-card {
             background: white;
             border-radius: 15px;
@@ -66,13 +88,17 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             height: 100%;
         }
-
+        
         .gallery-item {
             position: relative;
             overflow: hidden;
             border-radius: 10px;
         }
+        #testimonialCarousel{
+            background-color:#e0cebf;
 
+        }
+       
         .gallery-overlay {
             position: absolute;
             top: 0;
@@ -86,17 +112,17 @@
             opacity: 0;
             transition: all 0.3s ease;
         }
-
+        
         .gallery-item:hover .gallery-overlay {
             opacity: 1;
         }
-
+        
         .section-title {
             position: relative;
             padding-bottom: 20px;
             margin-bottom: 50px;
         }
-
+        
         .section-title::after {
             content: '';
             position: absolute;
@@ -107,28 +133,28 @@
             height: 3px;
             background: var(--primary-color);
         }
-
+        
         .testimonial-card {
             border-left: 4px solid var(--primary-color);
         }
-
+        
         footer {
             background: var(--dark-color);
             color: white;
         }
-
+        
         .social-icons a {
             color: white;
             font-size: 1.5rem;
             margin: 0 10px;
             transition: all 0.3s ease;
         }
-
+        
         .social-icons a:hover {
             color: var(--primary-color);
             transform: translateY(-3px);
         }
-
+        
         #scrollToTopBtn {
             position: fixed;
             bottom: 30px;
@@ -136,121 +162,31 @@
             z-index: 1000;
             display: none;
         }
-
+        
         .btn-primary {
             background-color: var(--primary-color);
             border-color: var(--primary-color);
         }
-
+        
         .btn-primary:hover {
             background-color: var(--secondary-color);
             border-color: var(--secondary-color);
         }
-
+        
         .btn-outline-primary {
             color: var(--primary-color);
             border-color: var(--primary-color);
         }
-
+        
         .btn-outline-primary:hover {
             background-color: var(--primary-color);
             border-color: var(--primary-color);
-            color: #fff;
         }
-
-        /* Styles pour le carousel des témoignages */
-        .testimonial-carousel .carousel-item {
-            padding: 20px;
-        }
-
-        .testimonial-carousel .carousel-control-prev,
-        .testimonial-carousel .carousel-control-next {
-            width: 5%;
-            opacity: 0.8;
-        }
-
-        .testimonial-carousel .carousel-control-prev-icon,
-        .testimonial-carousel .carousel-control-next-icon {
-            background-color: var(--primary-color);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            background-size: 60%;
-        }
-
-        .testimonial-carousel .carousel-indicators {
-            bottom: -50px;
-        }
-
-        .testimonial-carousel .carousel-indicators button {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: var(--primary-color);
-            opacity: 0.5;
-        }
-
-        .testimonial-carousel .carousel-indicators button.active {
-            opacity: 1;
-        }
-
-        /* ---------- Lightbox (menu) ---------- */
-        .lightbox {
-            display: none; /* shown via JS */
-            position: fixed;
-            inset: 0;
-            z-index: 3000;
-            background: rgba(0,0,0,0.85);
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .lightbox.open {
-            display: flex;
-            animation: fadeIn 0.25s ease;
-        }
-
-        .lightbox-content {
-            max-width: 95%;
-            max-height: 85%;
-            border-radius: 10px;
-            box-shadow: 0 0 30px rgba(0,0,0,0.6);
-            object-fit: contain;
-        }
-
-        .lightbox .close, 
-        .lightbox .prev, 
-        .lightbox .next {
-            position: absolute;
-            top: 20px;
-            color: white;
-            background: transparent;
-            border: none;
-            font-size: 34px;
-            cursor: pointer;
-            padding: 8px 12px;
-        }
-
-        .lightbox .close { right: 24px; }
-        .lightbox .prev { left: 20px; top: 50%; transform: translateY(-50%); font-size: 48px; }
-        .lightbox .next { right: 20px; top: 50%; transform: translateY(-50%); font-size: 48px; }
-
-        .lightbox .close:hover,
-        .lightbox .prev:hover,
-        .lightbox .next:hover {
-            color: var(--primary-color);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.98); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        /* small responsive fixes */
-        @media (max-width: 576px) {
-            .lightbox .prev, .lightbox .next { font-size: 36px; padding: 6px 10px; }
-        }
+         /* .btn-primary:active,.btn-outline-primary:active{
+            background-color: var(--light-color);
+            border-color: var(--dark-color);
+            color: var(--dark-color);
+         } */
     </style>
 </head>
 <body>
@@ -267,13 +203,27 @@
             
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#accueil">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#offres">Offres spéciales</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#galerie">Galerie</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#temoignages">Témoignages</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#reservation">Réservation</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#accueil">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#menu">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#offres">Offres spéciales</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#galerie">Galerie</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#temoignages">Témoignages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#reservation">Réservation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -282,36 +232,62 @@
     <!-- Section Hero -->
     <section id="accueil" class="hero-section">
         <div class="container">
-            <div class="row align-items-center min-vh-100">
+            <div class="row align-items-center min-vh-100" >
                 <div class="col-lg-6 mb-5 mb-lg-0">
-                    <h1 class="display-4 fw-bold mb-4">Restaurant du coin</h1>
-                    <h2 class="display-5 fw-bold mb-4">Bienvenue</h2>
+                    <h1 class=" coin display-4 fw-bold mb-4">Restaurant du Coin</h1>
+                    <h2 class=" bienvenue display-5 fw-bold mb-4">Bienvenue</h2>
                     <p class="lead mb-5">
                         Saveur d'Or, le restaurant où authenticité et raffinement se rencontrent. 
                         Découvrez une cuisine inspirée des saveurs d'ici et d'ailleurs, préparée 
                         avec passion et des ingrédients de qualité.
                     </p>
                     <div class="d-flex flex-wrap gap-3">
-                        <a href="#" class="btn btn-light btn-lg px-4 py-2 fw-bold">Tarifs</a>
+                        <a href="https://www.bing.com/images/search?q=tarif%20restaurant&qs=n&form=QBIR&sp=-1&lq=0&pq=tarif%20restaurant&sc=10-16&cvid=F28A21219850481DA00A80A8FEF406DF&first=1" class="btn btn-light btn-lg px-4 py-2 fw-bold">Tarifs</a>
                         <a href="#menu" class="btn btn-outline-light btn-lg px-4 py-2 fw-bold">Voir Plus</a>
                     </div>
                 </div>
                 <div class="col-lg-6 text-center">
-                    <img src="images/repas1.jpg" alt="Repas Saveur d'Or" class="img-fluid rounded-3 shadow-lg" style="max-height: 500px; width: 100%; object-fit: cover;">
+                    <img src="images/repas1.jpg" alt="Repas Saveur d'Or" class="img-fluid rounded-3 shadow-lg" style="max-height: 500px; width: 100%;margin-left: 40px;">
                 </div>
             </div>
         </div>
     </section>
-
+<br>
+<br>
     <!-- Statistiques -->
     <section class="stats-section">
         <div class="container">
             <div class="row g-4">
-                <div class="col-md-2 col-6"><div class="stat-card"><h3 class="fw-bold text-primary mb-2">1800 FCFA</h3><p class="mb-0 fw-semibold">Plats d'entrée</p></div></div>
-                <div class="col-md-2 col-6"><div class="stat-card"><h3 class="fw-bold text-primary mb-2">2500 FCFA</h3><p class="mb-0 fw-semibold">Plats de résidence</p></div></div>
-                <div class="col-md-2 col-6"><div class="stat-card"><h3 class="fw-bold text-primary mb-2">1500 FCFA</h3><p class="mb-0 fw-semibold">Nos Desserts</p></div></div>
-                <div class="col-md-2 col-6"><div class="stat-card"><h3 class="fw-bold text-primary mb-2">3000 FCFA</h3><p class="mb-0 fw-semibold">Repas du soir</p></div></div>
-                <div class="col-md-2 col-6"><div class="stat-card"><h3 class="fw-bold text-primary mb-2">1000 FCFA</h3><p class="mb-0 fw-semibold">JUS / VIN</p></div></div>
+                <div class="col-md-2 col-6" style="margin-left: 100px;">
+                    <div class="stat-card" style="color: var(--dark-color);">
+                        <h3 class="fw-bold  mb-2">1800 FCFA</h3>
+                        <p class="mb-0 fw-semibold">Plats d'entrée</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-6">
+                    <div class="stat-card"style="color: var(--dark-color);">
+                        <h3 class="fw-bold mb-2">2500 FCFA</h3>
+                        <p class="mb-0 fw-semibold">Plats de résidence</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-6">
+                    <div class="stat-card"style="color: var(--dark-color);">
+                        <h3 class="fw-bold mb-2">1500 FCFA</h3>
+                        <p class="mb-0 fw-semibold">Nos Desserts</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-6">
+                    <div class="stat-card"style="color: var(--dark-color);">
+                        <h3 class="fw-bold  mb-2">3000 FCFA</h3>
+                        <p class="mb-0 fw-semibold">Repas du soir</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-6">
+                    <div class="stat-card"style="color: var(--dark-color);">
+                        <h3 class="fw-bold  mb-2">1000 FCFA</h3>
+                        <p class="mb-0 fw-semibold">JUS / VIN</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -319,15 +295,17 @@
     <!-- Menu -->
     <section id="menu" class="py-5 bg-light">
         <div class="container">
-            <h2 class="text-center section-title fw-bold display-5 mb-5">NOS MENUS</h2>
+            <h2 class="text-center section-title fw-bold display-5 mb-5 " style="color: var(--primary-color);">NOS MENUS</h2>
             <div class="row g-4">
                 <!-- Plat d'entrée -->
                 <div class="col-lg-4 col-md-6">
                     <div class="card border-0 shadow h-100 card-hover">
-                        <img src="images/plat d'entrée.avif" class="card-img-top menu-clickable" alt="Plats d'entrée" style="height: 250px; object-fit: cover;">
-                        <div class="card-body text-center">
+                        <img src="images/plat d'entrée.avif" class="card-img-top" alt="Plats d'entrée" style="height: 250px; object-fit: cover;">
+                        <div class="card-body text-center" style="color: var(--dark-color);">
                             <h5 class="card-title fw-bold">Plats d'entrée</h5>
-                            <p class="card-text">Découvrez nos entrées raffinées, préparées avec soin pour éveiller vos papilles.</p>
+                            <p class="card-text">
+                                Découvrez nos entrées raffinées, préparées avec soin pour éveiller vos papilles.
+                            </p>
                             <a href="./pages/entree.html" class="btn btn-outline-primary">Voir les plats</a>
                         </div>
                     </div>
@@ -336,10 +314,12 @@
                 <!-- Plats de résidence -->
                 <div class="col-lg-4 col-md-6">
                     <div class="card border-0 shadow h-100 card-hover">
-                        <img src="images/plat de resience.jpg" class="card-img-top menu-clickable" alt="Plats de résidence" style="height: 250px; object-fit: cover;">
-                        <div class="card-body text-center">
+                        <img src="images/plat de resience.jpg" class="card-img-top" alt="Plats de résidence" style="height: 250px; object-fit: cover;">
+                        <div class="card-body text-center"style="color: var(--dark-color);">
                             <h5 class="card-title fw-bold">Plats de résidence</h5>
-                            <p class="card-text">Découvrez nos délicieux plats de résidence, préparés avec soin et passion.</p>
+                            <p class="card-text">
+                                Découvrez nos délicieux plats de résidence, préparés avec soin et passion.
+                            </p>
                             <a href="./pages/residence.html" class="btn btn-outline-primary">Voir les plats</a>
                         </div>
                     </div>
@@ -348,10 +328,12 @@
                 <!-- Desserts -->
                 <div class="col-lg-4 col-md-6">
                     <div class="card border-0 shadow h-100 card-hover">
-                        <img src="images/dessert.jpg" class="card-img-top menu-clickable" alt="Desserts" style="height: 250px; object-fit: cover;">
-                        <div class="card-body text-center">
+                        <img src="images/dessert.jpg" class="card-img-top" alt="Desserts" style="height: 250px; object-fit: cover;">
+                        <div class="card-body text-center"style="color: var(--dark-color);">
                             <h5 class="card-title fw-bold">DESSERTS</h5>
-                            <p class="card-text">Chaque dessert est préparé avec soin, alliant saveurs raffinées et présentation délicate.</p>
+                            <p class="card-text">
+                                Chaque dessert est préparé avec soin, alliant saveurs raffinées et présentation délicate.
+                            </p>
                             <a href="./pages/dessert.html" class="btn btn-outline-primary">Voir les desserts</a>
                         </div>
                     </div>
@@ -360,10 +342,12 @@
                 <!-- Repas du soir -->
                 <div class="col-lg-4 col-md-6">
                     <div class="card border-0 shadow h-100 card-hover">
-                        <img src="images/repas du soir.jpg" class="card-img-top menu-clickable" alt="Repas du soir" style="height: 250px; object-fit: cover;">
-                        <div class="card-body text-center">
+                        <img src="images/repas du soir.jpg" class="card-img-top" alt="Repas du soir" style="height: 250px; object-fit: cover;">
+                        <div class="card-body text-center"style="color: var(--dark-color);">
                             <h5 class="card-title fw-bold">Repas du soir</h5>
-                            <p class="card-text">Des plats raffinés, aux saveurs authentiques, pour un dîner unique et chaleureux.</p>
+                            <p class="card-text">
+                                Des plats raffinés, aux saveurs authentiques, pour un dîner unique et chaleureux.
+                            </p>
                             <a href="./pages/residence.html" class="btn btn-outline-primary">Voir les plats</a>
                         </div>
                     </div>
@@ -372,10 +356,12 @@
                 <!-- Jus locaux -->
                 <div class="col-lg-4 col-md-6">
                     <div class="card border-0 shadow h-100 card-hover">
-                        <img src="images/jus locaux.jpg" class="card-img-top menu-clickable" alt="Jus locaux" style="height: 250px; object-fit: cover;">
-                        <div class="card-body text-center">
+                        <img src="images/jus locaux.jpg" class="card-img-top" alt="Jus locaux" style="height: 250px; object-fit: cover;">
+                        <div class="card-body text-center"style="color: var(--dark-color);">
                             <h5 class="card-title fw-bold">Jus locaux</h5>
-                            <p class="card-text">Découvrez nos jus locaux 100% naturels, préparés avec des fruits frais de nos régions.</p>
+                            <p class="card-text">
+                                Découvrez nos jus locaux 100% naturels, préparés avec des fruits frais de nos régions.
+                            </p>
                             <a href="./pages/jus.html" class="btn btn-outline-primary">Voir les jus</a>
                         </div>
                     </div>
@@ -384,10 +370,12 @@
                 <!-- Vins -->
                 <div class="col-lg-4 col-md-6">
                     <div class="card border-0 shadow h-100 card-hover">
-                        <img src="images/vin.jpg" class="card-img-top menu-clickable" alt="Vins" style="height: 250px; object-fit: cover;">
-                        <div class="card-body text-center">
+                        <img src="images/vin.jpg" class="card-img-top" alt="Vins" style="height: 250px; object-fit: cover;">
+                        <div class="card-body text-center"style="color: var(--dark-color);">
                             <h5 class="card-title fw-bold">Du VIN</h5>
-                            <p class="card-text">Découvrez notre collection raffinée de vins sélectionnés pour accompagner vos plats.</p>
+                            <p class="card-text">
+                                Découvrez notre collection raffinée de vins sélectionnés pour accompagner vos plats.
+                            </p>
                             <a href="./pages/vin.html" class="btn btn-outline-primary">Voir les vins</a>
                         </div>
                     </div>
@@ -399,14 +387,16 @@
     <!-- Offres Spéciales -->
     <section id="offres" class="py-5">
         <div class="container">
-            <h2 class="text-center section-title fw-bold display-5 mb-5">OFFRES SPÉCIALES</h2>
+            <h2 class="text-center section-title fw-bold display-5 mb-5" style="color: var(--primary-color);">OFFRES SPÉCIALES</h2>
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6">
                     <div class="card border-0 shadow h-100 card-hover">
                         <img src="images/cours ou des ateliers de cuisine.jpg" class="card-img-top" alt="Ateliers cuisine" style="height: 250px; object-fit: cover;">
-                        <div class="card-body text-center">
+                        <div class="card-body text-center" style="color: var(--dark-color);">
                             <h5 class="card-title fw-bold">Ateliers de cuisine</h5>
-                            <p class="card-text">Les cours de cuisine fidélisent les clients tout en valorisant l'expertise et l'image du restaurant.</p>
+                            <p class="card-text">
+                                Les cours de cuisine fidélisent les clients tout en valorisant l'expertise et l'image du restaurant.
+                            </p>
                             <a href="#" class="btn btn-primary">Lire Plus</a>
                         </div>
                     </div>
@@ -415,9 +405,11 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="card border-0 shadow h-100 card-hover">
                         <img src="images/boisson emblématique.jpg" class="card-img-top" alt="Boisson signature" style="height: 250px; object-fit: cover;">
-                        <div class="card-body text-center">
+                        <div class="card-body text-center"style="color: var(--dark-color);">
                             <h5 class="card-title fw-bold">Boisson emblématique</h5>
-                            <p class="card-text">Créer un plat ou une boisson signature rend votre restaurant unique et attire la curiosité.</p>
+                            <p class="card-text">
+                                Créer un plat ou une boisson signature rend votre restaurant unique et attire la curiosité.
+                            </p>
                             <a href="#" class="btn btn-primary">Lire Plus</a>
                         </div>
                     </div>
@@ -426,9 +418,11 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="card border-0 shadow h-100 card-hover">
                         <img src="images/Collaborer avec des entreprises locales.jpg" class="card-img-top" alt="Collaboration locale" style="height: 250px; object-fit: cover;">
-                        <div class="card-body text-center">
+                        <div class="card-body text-center"style="color: var(--dark-color);">
                             <h5 class="card-title fw-bold">Collaboration locale</h5>
-                            <p class="card-text">Les partenariats locaux favorisent la visibilité du restaurant et l'élargissement de sa clientèle.</p>
+                            <p class="card-text">
+                                Les partenariats locaux favorisent la visibilité du restaurant et l'élargissement de sa clientèle.
+                            </p>
                             <a href="#" class="btn btn-primary">Lire Plus</a>
                         </div>
                     </div>
@@ -440,47 +434,59 @@
     <!-- Galerie -->
     <section id="galerie" class="py-5 bg-light">
         <div class="container">
-            <h2 class="text-center section-title fw-bold display-5 mb-5">GALERIE</h2>
+            <h2 class="text-center section-title fw-bold display-5 mb-5" style="color: var(--primary-color);">GALERIE</h2>
             <div class="row g-3">
                 <div class="col-lg-4 col-md-6">
                     <div class="gallery-item">
                         <img src="images/Barbecue.jpg" class="img-fluid w-100" alt="Barbecue" style="height: 300px; object-fit: cover;">
-                        <div class="gallery-overlay"><h5 class="text-white text-center fw-bold">Barbecue</h5></div>
+                        <div class="gallery-overlay">
+                            <h5 class="text-white text-center fw-bold">Barbecue</h5>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="col-lg-4 col-md-6">
                     <div class="gallery-item">
                         <img src="images/Gratin.jpg" class="img-fluid w-100" alt="Gratin" style="height: 300px; object-fit: cover;">
-                        <div class="gallery-overlay"><h5 class="text-white text-center fw-bold">Gratin de gnocchis</h5></div>
+                        <div class="gallery-overlay">
+                            <h5 class="text-white text-center fw-bold">Gratin de gnocchis</h5>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="col-lg-4 col-md-6">
                     <div class="gallery-item">
                         <img src="images/gateau.jpg" class="img-fluid w-100" alt="Gâteau" style="height: 300px; object-fit: cover;">
-                        <div class="gallery-overlay"><h5 class="text-white text-center fw-bold">Gâteaux</h5></div>
+                        <div class="gallery-overlay">
+                            <h5 class="text-white text-center fw-bold">Gâteaux</h5>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="col-lg-4 col-md-6">
                     <div class="gallery-item">
                         <img src="images/poulet servi avec riz et frites césar et salades_de_légumes et limona.jpg" class="img-fluid w-100" alt="Poulet" style="height: 300px; object-fit: cover;">
-                        <div class="gallery-overlay"><h5 class="text-white text-center fw-bold">Poulet avec riz et légumes</h5></div>
+                        <div class="gallery-overlay">
+                            <h5 class="text-white text-center fw-bold">Poulet avec riz et légumes</h5>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="col-lg-4 col-md-6">
                     <div class="gallery-item">
                         <img src="images/SALDE DE FRUITS.jpg" class="img-fluid w-100" alt="Salade de fruits" style="height: 300px; object-fit: cover;">
-                        <div class="gallery-overlay"><h5 class="text-white text-center fw-bold">Salade de fruits</h5></div>
+                        <div class="gallery-overlay">
+                            <h5 class="text-white text-center fw-bold">Salade de fruits</h5>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="col-lg-4 col-md-6">
                     <div class="gallery-item">
                         <img src="images/Crêpes.jpg" class="img-fluid w-100" alt="Crêpes" style="height: 300px; object-fit: cover;">
-                        <div class="gallery-overlay"><h5 class="text-white text-center fw-bold">Crêpes</h5></div>
+                        <div class="gallery-overlay">
+                            <h5 class="text-white text-center fw-bold">Crêpes</h5>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -490,10 +496,10 @@
     <!-- Témoignages -->
     <section id="temoignages" class="py-5">
         <div class="container">
-            <h2 class="text-center section-title fw-bold display-5 mb-5">TÉMOIGNAGES</h2>
-            <div id="testimonialCarousel" class="carousel slide testimonial-carousel" data-bs-ride="carousel">
+            <h2 class="text-center section-title fw-bold display-5 mb-5" style="color: var(--primary-color);">TÉMOIGNAGES</h2>
+            <div id="testimonialCarousel" class="carousel slide testimonial-carousel" data-bs-ride="carousel" >
                 <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0"  class="active" aria-current="true" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
                     <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
@@ -504,7 +510,7 @@
                                 <div class="card testimonial-card border-0 shadow h-100">
                                     <div class="card-body">
                                         <div class="d-flex align-items-center mb-3">
-                                            <img src="images/ipm.jpg" alt="IPM" class="rounded-circle me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                                            <img src="images/ipm.jpg" alt="IPM" class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
                                             <div><h5 class="fw-bold mb-0">Institut Présentation de Marie</h5></div>
                                         </div>
                                         <p class="card-text">"Notre institut a eu le plaisir de collaborer avec le restaurant Saveurs d'Or à plusieurs reprises. La qualité des plats, la présentation soignée et le professionnalisme de l'équipe ont toujours été au rendez-vous."</p>
@@ -519,7 +525,7 @@
                                 <div class="card testimonial-card border-0 shadow h-100">
                                     <div class="card-body">
                                         <div class="d-flex align-items-center mb-3">
-                                            <img src="images/astou.jpg" alt="Astou" class="rounded-circle me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                                            <img src="images/astou.jpg" alt="Astou" class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
                                             <div><h5 class="fw-bold mb-0">Ndeye Astou DIOP</h5></div>
                                         </div>
                                         <p class="card-text">"Une expérience culinaire exceptionnelle ! Les plats sont aussi beaux que délicieux, et l'accueil est toujours chaleureux. Saveurs d'Or est devenu mon restaurant préféré pour mes dîners entre amis."</p>
@@ -528,13 +534,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="carousel-item">
+                     <div class="carousel-item">
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
                                 <div class="card testimonial-card border-0 shadow h-100">
                                     <div class="card-body">
                                         <div class="d-flex align-items-center mb-3">
-                                            <img src="images/am.jpg" alt="Am Dev" class="rounded-circle me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                                            <img src="images/am.jpg" alt="Astou" class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
                                             <div><h5 class="fw-bold mb-0">Am_DEV</h5></div>
                                         </div>
                                         <p class="card-text">"Les repas sont toujours frais et bien présentés. On sent la qualité dans chaque ingrédient. C'est mon adresse coup de cœur pour un dîner réussi !"</p>
@@ -543,14 +549,15 @@
                             </div>
                         </div>
                     </div>
+                  
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev" >
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Précédent</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Suivant</span>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next" >
+                    <span class="carousel-control-next-icon" aria-hidden="true" ></span>
+                    <span class="visually-hidden" >Suivant</span>
                 </button>
             </div>
         </div>
@@ -559,7 +566,7 @@
     <!-- Réservation -->
     <section id="reservation" class="py-5 bg-light">
         <div class="container">
-            <h2 class="text-center section-title fw-bold display-5 mb-5">RÉSERVATION</h2>
+            <h2 class="text-center section-title fw-bold display-5 mb-5" style="color: var(--primary-color);">RÉSERVATION</h2>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="card border-0 shadow">
@@ -569,21 +576,41 @@
                                 <span class="fw-bold" style="color: var(--primary-color); font-size: 1.5rem;">gastronomie ou de collaborations.</span>
                             </p>
                             <form class="contact-form">
-                                <div class="mb-3"><input type="text" class="form-control form-control-lg" placeholder="Nom complet" required></div>
-                                <div class="row mb-3">
-                                    <div class="col-md-6"><input type="tel" class="form-control form-control-lg" placeholder="Téléphone" required></div>
-                                    <div class="col-md-6"><input type="text" class="form-control form-control-lg" placeholder="N° Table"></div>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control form-control-lg" placeholder="Nom complet" required>
                                 </div>
                                 <div class="row mb-3">
-                                    <div class="col-md-6"><input type="date" class="form-control form-control-lg" required></div>
-                                    <div class="col-md-6"><input type="time" class="form-control form-control-lg" required></div>
+                                    <div class="col-md-6">
+                                        <input type="tel" class="form-control form-control-lg" placeholder="Téléphone" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control form-control-lg" placeholder="N° Table">
+                                    </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <div class="col-md-6"><input type="text" class="form-control form-control-lg" placeholder="Nom du/des plat(s)"></div>
-                                    <div class="col-md-6"><input type="text" class="form-control form-control-lg" placeholder="Nom Jus/vin"></div>
+                                    <div class="col-md-6">
+                                        <input type="date" class="form-control form-control-lg" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="time" class="form-control form-control-lg" required>
+                                    </div>
                                 </div>
-                                <div class="mb-4"><textarea class="form-control form-control-lg" rows="4" placeholder="Message"></textarea></div>
-                                <div class="text-center"><button type="submit" class="btn btn-primary btn-lg px-5">Envoyer la réservation <i class="fas fa-paper-plane ms-2"></i></button></div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control form-control-lg" placeholder="Nom du/des plat(s)">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control form-control-lg" placeholder="Nom Jus/vin">
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <textarea class="form-control form-control-lg" rows="4" placeholder="Message"></textarea>
+                                </div>
+                                <div class=" boutton text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg px-5">
+                                        Envoyer la réservation <i class="fas fa-paper-plane ms-2"></i>
+                                    </button>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -595,12 +622,12 @@
     <!-- Contact -->
     <section id="contact" class="py-5">
         <div class="container">
-            <h2 class="text-center section-title fw-bold display-5 mb-5">NOUS CONTACTER</h2>
+            <h2 class="text-center section-title fw-bold display-5 mb-5" style="color: var(--primary-color);">NOUS CONTACTER</h2>
             <div class="row g-4">
                 <div class="col-lg-6">
                     <div class="card border-0 shadow h-100">
                         <div class="card-body">
-                            <h3 class="card-title fw-bold mb-4">Notre Adresse</h3>
+                            <h3 class="card-title fw-bold mb-4" style="color: var(--primary-color);">Notre Adresse</h3>
                             <div class="ratio ratio-16x9">
                                 <iframe 
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7669.674776351889!2d-16.514521970054197!3d16.021978315125367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xe95564b808a0cc1%3A0x31d4994b646c8985!2sSud%2C%20Saint-Louis!5e0!3m2!1sfr!2ssn!4v1760447084339!5m2!1sfr!2ssn" 
@@ -615,13 +642,23 @@
                 <div class="col-lg-6">
                     <div class="card border-0 shadow h-100">
                         <div class="card-body">
-                            <h3 class="card-title fw-bold mb-4">Formulaire de contact</h3>
+                            <h3 class="card-title fw-bold mb-4" style="color: var(--primary-color);">Formulaire de contact</h3>
                             <form>
-                                <div class="mb-3"><input type="text" class="form-control form-control-lg" placeholder="Nom complet" required></div>
-                                <div class="mb-3"><input type="tel" class="form-control form-control-lg" placeholder="Téléphone" required></div>
-                                <div class="mb-3"><input type="text" class="form-control form-control-lg" placeholder="Adresse"></div>
-                                <div class="mb-3"><textarea class="form-control form-control-lg" rows="3" placeholder="Commander" required></textarea></div>
-                                <div class="mb-3"><input type="text" class="form-control form-control-lg" placeholder="Autres détails"></div>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control form-control-lg" placeholder="Nom complet" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="tel" class="form-control form-control-lg" placeholder="Téléphone" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control form-control-lg" placeholder="Adresse">
+                                </div>
+                                <div class="mb-3">
+                                    <textarea class="form-control form-control-lg" rows="3" placeholder="Commander" required></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control form-control-lg" placeholder="Autres détails">
+                                </div>
                                 <button type="submit" class="btn btn-primary btn-lg w-100">ENVOYER</button>
                             </form>
                         </div>
@@ -637,7 +674,10 @@
             <div class="row">
                 <div class="col-lg-8 mx-auto text-center">
                     <h2 class="fw-bold mb-4">Saveur d'OR</h2>
-                    <p class="lead mb-4">L'adresse où chaque plat est une invitation au voyage des sens. Ici, la passion de la cuisine se mêle à la convivialité et au plaisir de partager.</p>
+                    <p class="lead mb-4">
+                        L'adresse où chaque plat est une invitation au voyage des sens. 
+                        Ici, la passion de la cuisine se mêle à la convivialité et au plaisir de partager.
+                    </p>
                     <h4 class="mb-4">Nos Réseaux Sociaux</h4>
                     <div class="social-icons mb-4">
                         <a href="#"><i class="fab fa-facebook"></i></a>
@@ -650,8 +690,16 @@
             </div>
             <hr class="my-4">
             <div class="row">
-                <div class="col-md-6 text-center text-md-start"><p class="mb-0">&copy; 2025 Sali_Dev - Tous droits réservés</p></div>
-                <div class="col-md-6"><ul class="nav justify-content-center justify-content-md-end"><li class="nav-item"><a class="nav-link text-white" href="#accueil">Accueil</a></li><li class="nav-item"><a class="nav-link text-white" href="#menu">Menu</a></li><li class="nav-item"><a class="nav-link text-white" href="#contact">Contact</a></li></ul></div>
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2025 Sali_Dev - Tous droits réservés</p>
+                </div>
+                <div class="col-md-6">
+                    <ul class="nav justify-content-center justify-content-md-end">
+                        <li class="nav-item"><a class="nav-link text-white" href="#accueil">Accueil</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#menu">Menu</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#contact">Contact</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </footer>
@@ -660,14 +708,6 @@
     <button id="scrollToTopBtn" class="btn btn-primary rounded-circle" style="width: 50px; height: 50px;">
         <i class="fas fa-arrow-up"></i>
     </button>
-
-    <!-- Lightbox DOM (overlay) -->
-    <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Agrandir l'image">
-        <button class="prev" aria-label="Image précédente"><i class="fa fa-chevron-left"></i></button>
-        <img id="lightbox-img" class="lightbox-content" src="" alt="">
-        <button class="next" aria-label="Image suivante"><i class="fa fa-chevron-right"></i></button>
-        <button class="close" aria-label="Fermer la fenêtre"><i class="fa fa-times"></i></button>
-    </div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -693,122 +733,38 @@
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                // If the link points to the top (href="#") or to nothing, ignore
-                const href = this.getAttribute('href');
-                if (!href || href === '#') return;
                 e.preventDefault();
-                const target = document.querySelector(href);
+                const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-                // close navbar on mobile after click
-                const navbarCollapse = document.querySelector('.navbar-collapse');
-                if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-                    new bootstrap.Collapse(navbarCollapse).hide();
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
             });
         });
 
         // Active navigation link highlighting
         window.addEventListener('scroll', function() {
-            const sections = document.querySelectorAll('section[id]');
+            const sections = document.querySelectorAll('section');
             const navLinks = document.querySelectorAll('.nav-link');
-
+            
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.clientHeight;
-                if (scrollY >= (sectionTop - 150)) {
+                if (scrollY >= (sectionTop - 100)) {
                     current = section.getAttribute('id');
                 }
             });
 
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                const href = link.getAttribute('href');
-                if (href === `#${current}`) {
+                if (link.getAttribute('href') === `#${current}`) {
                     link.classList.add('active');
                 }
             });
         });
-
-        /* ---------------- Lightbox logic (for images in NOS MENUS) ---------------- */
-        (function() {
-            const clickableSel = '#menu .menu-clickable'; // selector for menu images
-            const images = Array.from(document.querySelectorAll(clickableSel));
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            const closeBtn = lightbox.querySelector('.close');
-            const prevBtn = lightbox.querySelector('.prev');
-            const nextBtn = lightbox.querySelector('.next');
-
-            if (!images.length) return; // nothing to do
-
-            // Build array of src and alt
-            const gallery = images.map(img => ({ src: img.getAttribute('src'), alt: img.getAttribute('alt') || '' }));
-            let currentIndex = 0;
-
-            function openLightbox(index) {
-                currentIndex = index;
-                const item = gallery[currentIndex];
-                lightboxImg.src = item.src;
-                lightboxImg.alt = item.alt;
-                lightbox.classList.add('open');
-                lightbox.setAttribute('aria-hidden', 'false');
-                // disable body scroll while open
-                document.body.style.overflow = 'hidden';
-            }
-
-            function closeLightbox() {
-                lightbox.classList.remove('open');
-                lightbox.setAttribute('aria-hidden', 'true');
-                lightboxImg.src = '';
-                lightboxImg.alt = '';
-                document.body.style.overflow = '';
-            }
-
-            function showPrev() {
-                currentIndex = (currentIndex - 1 + gallery.length) % gallery.length;
-                openLightbox(currentIndex);
-            }
-
-            function showNext() {
-                currentIndex = (currentIndex + 1) % gallery.length;
-                openLightbox(currentIndex);
-            }
-
-            // Click on thumbnail
-            images.forEach((imgEl, idx) => {
-                imgEl.style.cursor = 'zoom-in';
-                imgEl.addEventListener('click', (e) => {
-                    openLightbox(idx);
-                });
-            });
-
-            // Buttons
-            closeBtn.addEventListener('click', closeLightbox);
-            prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showPrev(); });
-            nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showNext(); });
-
-            // Click outside image to close
-            lightbox.addEventListener('click', (e) => {
-                if (e.target === lightbox || e.target === lightboxImg) {
-                    // if clicked on overlay (not on prev/next/close)
-                    if (e.target === lightbox) closeLightbox();
-                }
-            });
-
-            // Keyboard navigation: ESC to close, arrows to navigate
-            window.addEventListener('keydown', (e) => {
-                if (!lightbox.classList.contains('open')) return;
-                if (e.key === 'Escape') closeLightbox();
-                if (e.key === 'ArrowLeft') showPrev();
-                if (e.key === 'ArrowRight') showNext();
-            });
-
-            // Prevent image drag to keep UX clean
-            lightboxImg.addEventListener('dragstart', (e) => e.preventDefault());
-        })();
     </script>
 </body>
 </html>
